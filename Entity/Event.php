@@ -272,7 +272,7 @@ class Event
      */
     public function setData($data)
     {
-        $this->data = $data;
+        $this->data = bin2hex( $data );
     
         return $this;
     }
@@ -284,7 +284,7 @@ class Event
      */
     public function getData()
     {
-        return $this->data;
+        return hex2bin( $this->data );
     }
 
     /**
@@ -295,7 +295,7 @@ class Event
      */
     public function setExtra($extra)
     {
-        $this->extra = $extra;
+        $this->extra = bin2hex( $extra );
     
         return $this;
     }
@@ -307,6 +307,6 @@ class Event
      */
     public function getExtra()
     {
-        return $this->extra;
+        return hex2bin( $this->extra );
     }
 }
