@@ -1,0 +1,3 @@
+services:
+    cgps_service:
+        class: CodeMonkeys\IntelliTrail\Bundle\EventBundle\CgpsService\CgpsService
