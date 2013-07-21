@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeMonkeys\Bundle\IntelliTrail\EventBundle;
+namespace CodeMonkeys\IntelliTrail\Bundle\EventBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
