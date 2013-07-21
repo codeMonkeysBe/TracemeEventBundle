@@ -4,6 +4,7 @@ namespace CodeMonkeys\IntelliTrail\Bundle\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -84,5 +85,28 @@ class EventController extends Controller
         return $processedDataParts;
 
     }
+
+    /**
+     * @Route("/out/{records}", defaults={"records" = 20})
+     */
+    public function outAction( $records )
+    {
+
+        $cgpsService    = $this->get('cgps_service');
+
+        $cgps =  $cgpsService->Cgps();
+
+        $em = $this->get('doctrine')->getManager();
+
+        $query = $em->createQuery( 'SELECT * FROM EventBundle:Event ORDER BY Date DESC' );
+        
+        $query->setMaxResults( $records );
+
+        $events = $query->getResult();
+
+        return array( 'events' => $events );
+
+    }
+
 
 }
