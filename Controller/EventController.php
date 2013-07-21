@@ -25,7 +25,7 @@ class EventController extends Controller
         $cgps->ClearResponseActionMembers();
 
         if( !$cgps->SetHttpData( $moduleDataString ) ){
-            return new Response( $cgps->BuildResponseHTTP(0) );
+            return new Response( $cgps->BuildResponseHTTP(0), 200, array() );
         }
 
         $method = $request->getMethod();
@@ -35,14 +35,14 @@ class EventController extends Controller
             $extraData = $request->getContent();
 
             if( $cgps->CanGetExtraDataSize() && ( $cgps->GetExtraDataSize()!=strlen( $extraData ) ) ){
-                return new Response( $cgps->BuildResponseHTTP(0) );
+                return new Response( $cgps->BuildResponseHTTP(0), 200, array());
             }
 
         }
 
         $pdp = $cgps->GetDataPartCount();
 
-        return new Response( $cgps->BuildResponseHTTP( $pdp ) );
+        return new Response( $cgps->BuildResponseHTTP( $pdp, 200, array()) );
 
 
     }
