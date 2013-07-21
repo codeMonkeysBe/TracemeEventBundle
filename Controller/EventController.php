@@ -18,7 +18,8 @@ class EventController extends Controller
     public function inAction( $moduleDataString )
     {
 
-        $cgpsService = $this->get('cgps_service');
+        $request        = $this->get('request');
+        $cgpsService    = $this->get('cgps_service');
 
         $cgps =  $cgpsService->Cgps();
         $cgps->ClearResponseActionMembers();
@@ -31,7 +32,7 @@ class EventController extends Controller
 
         if( $method === 'POST' ){
 
-            $extraData = $this->get("request")->getContent();
+            $extraData = $request->getContent();
 
             if( $cgps->CanGetExtraDataSize() && ( $cgps->GetExtraDataSize()!=strlen( $extraData ) ) ){
                 return new Response( $cgps->BuildResponseHTTP(0) );
