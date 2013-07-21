@@ -88,6 +88,7 @@ class EventController extends Controller
 
     /**
      * @Route("/out/{records}", defaults={"records" = 20})
+     * @Template()
      */
     public function outAction( $records )
     {
@@ -98,7 +99,7 @@ class EventController extends Controller
 
         $em = $this->get('doctrine')->getManager();
 
-        $query = $em->createQuery( 'SELECT * FROM EventBundle:Event ORDER BY Date DESC' );
+        $query = $em->createQuery( 'SELECT e FROM EventBundle:Event e ORDER BY e.date DESC' );
         
         $query->setMaxResults( $records );
 
