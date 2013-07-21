@@ -1,5 +1,6 @@
 <ul>
     {% for event in events %}
-    <li>{{ event.getDate }}</li>
+    <li>{{ event.getDate|date('Y-m-d') }}</li>
+    
     {% endfor %}
 </ul>
