@@ -309,4 +309,21 @@ class Event
     {
         return hex2bin( $this->extra );
     }
+
+    public function getLat()
+    {
+        $LatitudeSmall = $this->getLatitude();
+        if(($LatitudeSmall>0)&&($LatitudeSmall>>31)) $LatitudeSmall=-(0x7FFFFFFF-($LatitudeSmall&0x7FFFFFFF))-1;
+        return (float)$LatitudeSmall/(float)600000;
+    }
+
+    public function getLong()
+    {
+        $LongitudeSmall = $this->getLongitude();
+        if(($LongitudeSmall>0)&&($LongitudeSmall>>31)) $LongitudeSmall=-(0x7FFFFFFF-($LongitudeSmall&0x7FFFFFFF))-1;
+        return (float)$LongitudeSmall/(float)600000;
+    }
+
+
+
 }

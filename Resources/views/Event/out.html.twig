@@ -1,6 +1,6 @@
 <ul>
     {% for event in events %}
-    <li>{{ event.getDate|date('Y-m-d H:i:s') }}</li>
+    <li>{{ event.getDate|date('Y-m-d H:i:s') }} - {{ event.getLat() }} - {{ event.getLong() }}  </li>
     
     {% endfor %}
 </ul>
