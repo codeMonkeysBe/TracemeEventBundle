@@ -58,7 +58,7 @@ class EventController extends Controller
 
         for( ;$processedDataParts < $cgps->GetDataPartCount(); $processedDataParts++ ){
 
-            if(!$cgps->SelectDataPart($ProcessedDataParts) || !$cgps->IsValid())
+            if(!$cgps->SelectDataPart($processedDataParts) || !$cgps->IsValid())
             {
                 continue;
             }
