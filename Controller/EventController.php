@@ -65,7 +65,7 @@ class EventController extends Controller
 
             $event = new Event();
 
-            $event->setDate( new \DateTime( '@' . $cgps->GetUtcTime() ) );
+            $event->setDate( new \DateTime( $cgps->GetUtcTimeMySQL() ) );
             $event->setImei( $cgps->GetImei() );
             $event->setSwitch( $cgps->GetSwitch() );
             $event->setEventid( $cgps->CanGetEventID() ? $cgps->GetEventID() : 0 );
