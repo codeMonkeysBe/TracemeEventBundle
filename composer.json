@@ -1,0 +1,9 @@
+{
+  "name": "codemonkeys/intellitrail-event-bundle",
+  "type": "symfony-bundle",
+  "autoload": {
+        "psr-0": { "CodeMonkeys\\IntelliTrail\\Bundle\\EventBundle": "" }
+    },
+  "target-dir": "CodeMonkeys/IntelliTrail/Bundle/EventBundle"
+}
+ 
