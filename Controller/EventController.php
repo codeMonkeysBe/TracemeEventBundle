@@ -42,7 +42,7 @@ class EventController extends Controller
 
         $pdp = $cgps->GetDataPartCount();
 
-        return new Response( $cgps->BuildResponseHTTP( $pdp, 200, array()) );
+        return new Response( $cgps->BuildResponseHTTP( $pdp ), 200, array() );
 
 
     }
