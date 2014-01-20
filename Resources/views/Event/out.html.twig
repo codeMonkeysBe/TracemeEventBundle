@@ -1,0 +1,9 @@
+<ul>
+    {% for event in events %}
+    <li>{{ event.getDate|date('Y-m-d H:i:s') }} - <a href="https://www.google.com/maps/preview#!q={{ event.getLat() }}+{{ event.getLong() }}">Maps</a></li>
+    
+    {% endfor %}
+</ul>
+
+
+
