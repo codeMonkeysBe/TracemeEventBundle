@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeMonkeys\Bundle\IntelliTrail\EventBundle\DependencyInjection;
+namespace CodeMonkeys\IntelliTrail\Bundle\EventBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
