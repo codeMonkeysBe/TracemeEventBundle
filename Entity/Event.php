@@ -53,7 +53,7 @@ class Event
     /**
      * @var integer
      *
-     * @ORM\Column(name="eventid", type="smallint")
+     * @ORM\Column(name="eventid", type="integer")
      */
     private $eventid;
 
