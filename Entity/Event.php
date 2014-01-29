@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
          * } 
      * )
      *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="CodeMonkeys\IntelliTrail\Bundle\EventBundle\Entity\EventRepository")
  */
 class Event
 {
