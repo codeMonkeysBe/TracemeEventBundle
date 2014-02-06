@@ -82,7 +82,10 @@ class EventController extends Controller
 
         }
 
-        $em->flush();
+        try {
+            $em->flush();
+        }catch ( \Exception $e ){
+        }
 
         return $processedDataParts;
 
