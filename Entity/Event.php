@@ -2,6 +2,8 @@
 
 namespace CodeMonkeys\IntelliTrail\Bundle\EventBundle\Entity;
 
+use JMS\Serializer\Annotation as JMS;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
      * )
      *
  * @ORM\Entity(repositoryClass="CodeMonkeys\IntelliTrail\Bundle\EventBundle\Entity\EventRepository")
+ * @JMS\ExclusionPolicy("all")
  */
 class Event
 {
@@ -26,13 +29,20 @@ class Event
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @JMS\Expose
      */
     private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\CodeMonkeys\IntelliTrail\Bundle\ApiBundle\Entity\Device", inversedBy="events")
+     */
+    private $device;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     * @JMS\Expose
      */
     private $date;
 
@@ -40,6 +50,7 @@ class Event
      * @var integer
      *
      * @ORM\Column(name="imei", type="bigint")
+     * @JMS\Expose
      */
     private $imei;
 
@@ -47,13 +58,15 @@ class Event
      * @var integer
      *
      * @ORM\Column(name="switch", type="smallint")
+     * @JMS\Expose
      */
     private $switch;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="eventid", type="smallint")
+     * @ORM\Column(name="eventid", type="integer")
+     * @JMS\Expose
      */
     private $eventid;
 
@@ -61,6 +74,7 @@ class Event
      * @var integer
      *
      * @ORM\Column(name="latitude", type="bigint")
+     * @JMS\Expose
      */
     private $latitude;
 
@@ -68,6 +82,7 @@ class Event
      * @var integer
      *
      * @ORM\Column(name="longitude", type="bigint")
+     * @JMS\Expose
      */
     private $longitude;
 
@@ -75,6 +90,7 @@ class Event
      * @var integer
      *
      * @ORM\Column(name="io", type="smallint")
+     * @JMS\Expose
      */
     private $io;
 
@@ -326,4 +342,27 @@ class Event
 
 
 
+
+    /**
+     * Set device
+     *
+     * @param \CodeMonkeys\IntelliTrail\Bundle\ApiBundle\Entity\Device $device
+     * @return Event
+     */
+    public function setDevice(\CodeMonkeys\IntelliTrail\Bundle\ApiBundle\Entity\Device $device = null)
+    {
+        $this->device = $device;
+    
+        return $this;
+    }
+
+    /**
+     * Get device
+     *
+     * @return \CodeMonkeys\IntelliTrail\Bundle\ApiBundle\Entity\Device 
+     */
+    public function getDevice()
+    {
+        return $this->device;
+    }
 }

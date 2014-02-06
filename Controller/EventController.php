@@ -43,9 +43,9 @@ class EventController extends Controller
 
         }
 
-        $pdp = $this->storeEventFromCgpsData( $cgps, $extraData );
+        $processedDataParts = $this->storeEventFromCgpsData( $cgps, $extraData );
 
-        return new Response( $cgps->BuildResponseHTTP( $pdp ), 200, array() );
+        return new Response( $cgps->BuildResponseHTTP( $processedDataParts ), 200, array() );
 
 
     }
@@ -53,7 +53,8 @@ class EventController extends Controller
     protected function storeEventFromCgpsData( $cgps, $extraData )
     {
 
-        $em = $this->get('doctrine')->getManager();
+        $em         = $this->get('doctrine')->getManager();
+        $deviceRepo = $this->getDoctrine()->getRepository('ApiBundle:Device');
         
         $processedDataParts = 0;
 
@@ -75,6 +76,7 @@ class EventController extends Controller
             $event->setIo( $cgps->GetIO() );
             $event->setData( $cgps->GetBinaryData() );
             $event->setExtra( $extraData );
+            $event->setDevice( $deviceRepo->getDeviceForPropertyValue( 'imei', $event->getImei() ) );
 
             $em->persist( $event );
 
